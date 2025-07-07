@@ -33,7 +33,13 @@ const Header = () => {
       team: 'Team',
       contact: 'Contact',
       getStarted: 'Get Started',
-      agileStudio: 'Agile Digital Studio'
+      agileStudio: 'Agile Digital Studio',
+      devopsCloud: 'DevOps & Cloud',
+      aiMl: 'AI & Machine Learning',
+      processAutomation: 'Process Automation',
+      backendDev: 'Backend Development',
+      frontendDev: 'Frontend Development',
+      security: 'Security Solutions'
     },
     es: {
       home: 'Inicio',
@@ -43,7 +49,13 @@ const Header = () => {
       team: 'Equipo',
       contact: 'Contacto',
       getStarted: 'Comenzar',
-      agileStudio: 'Estudio Digital Ágil'
+      agileStudio: 'Estudio Digital Ágil',
+      devopsCloud: 'DevOps y Nube',
+      aiMl: 'IA y Aprendizaje Automático',
+      processAutomation: 'Automatización de Procesos',
+      backendDev: 'Desarrollo Backend',
+      frontendDev: 'Desarrollo Frontend',
+      security: 'Soluciones de Seguridad'
     },
     fr: {
       home: 'Accueil',
@@ -53,7 +65,13 @@ const Header = () => {
       team: 'Équipe',
       contact: 'Contact',
       getStarted: 'Commencer',
-      agileStudio: 'Studio Numérique Agile'
+      agileStudio: 'Studio Numérique Agile',
+      devopsCloud: 'DevOps et Cloud',
+      aiMl: 'IA et Apprentissage Automatique',
+      processAutomation: 'Automatisation des Processus',
+      backendDev: 'Développement Backend',
+      frontendDev: 'Développement Frontend',
+      security: 'Solutions de Sécurité'
     },
     de: {
       home: 'Startseite',
@@ -63,7 +81,13 @@ const Header = () => {
       team: 'Team',
       contact: 'Kontakt',
       getStarted: 'Loslegen',
-      agileStudio: 'Agiles Digital Studio'
+      agileStudio: 'Agiles Digital Studio',
+      devopsCloud: 'DevOps & Cloud',
+      aiMl: 'KI & Maschinelles Lernen',
+      processAutomation: 'Prozessautomatisierung',
+      backendDev: 'Backend-Entwicklung',
+      frontendDev: 'Frontend-Entwicklung',
+      security: 'Sicherheitslösungen'
     },
     zh: {
       home: '首页',
@@ -73,7 +97,13 @@ const Header = () => {
       team: '团队',
       contact: '联系我们',
       getStarted: '开始',
-      agileStudio: '敏捷数字工作室'
+      agileStudio: '敏捷数字工作室',
+      devopsCloud: 'DevOps与云服务',
+      aiMl: '人工智能与机器学习',
+      processAutomation: '流程自动化',
+      backendDev: '后端开发',
+      frontendDev: '前端开发',
+      security: '安全解决方案'
     },
     ja: {
       home: 'ホーム',
@@ -83,7 +113,13 @@ const Header = () => {
       team: 'チーム',
       contact: 'お問い合わせ',
       getStarted: '始める',
-      agileStudio: 'アジャイルデジタルスタジオ'
+      agileStudio: 'アジャイルデジタルスタジオ',
+      devopsCloud: 'DevOps & クラウド',
+      aiMl: 'AI & 機械学習',
+      processAutomation: 'プロセス自動化',
+      backendDev: 'バックエンド開発',
+      frontendDev: 'フロントエンド開発',
+      security: 'セキュリティソリューション'
     }
   };
 
@@ -137,7 +173,18 @@ const Header = () => {
   const navigationItems = [
     { name: t.home, href: '/' },
     { name: t.about, href: '/about' },
-    { name: t.services, href: '/services' },
+    { 
+      name: t.services, 
+      href: '/services',
+      submenu: [
+        { name: t.devopsCloud, href: '/services/devops' },
+        { name: t.aiMl, href: '/services/ai-ml' },
+        { name: t.processAutomation, href: '/services/automation' },
+        { name: t.backendDev, href: '/services/backend' },
+        { name: t.frontendDev, href: '/services/frontend' },
+        { name: t.security, href: '/services/security' }
+      ]
+    },
     { name: t.projects, href: '/projects' },
     { name: t.team, href: '/team' },
     { name: t.contact, href: '/contact' },
@@ -177,23 +224,38 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <motion.div
-                  className={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-red-400 transition-colors font-medium relative ${
-                    pathname === item.href ? 'text-blue-600 dark:text-red-400' : ''
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.name}
-                  {pathname === item.href && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-red-400"
-                      layoutId="activeTab"
-                    />
-                  )}
-                </motion.div>
-              </Link>
+              <div key={item.name} className="relative group">
+                <Link href={item.href}>
+                  <motion.div
+                    className={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-red-400 transition-colors font-medium relative ${
+                      pathname === item.href ? 'text-blue-600 dark:text-red-400' : ''
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.name}
+                    {pathname === item.href && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-red-400"
+                        layoutId="activeTab"
+                      />
+                    )}
+                  </motion.div>
+                </Link>
+                
+                {/* Submenu for Services */}
+                {item.submenu && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    {item.submenu.map((subItem) => (
+                      <Link key={subItem.name} href={subItem.href}>
+                        <div className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                          {subItem.name}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -323,17 +385,35 @@ const Header = () => {
           >
             <div className="px-4 py-6 space-y-4">
               {navigationItems.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <motion.div
-                    className={`block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-red-400 transition-colors font-medium ${
-                      pathname === item.href ? 'text-blue-600 dark:text-red-400' : ''
-                    }`}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </motion.div>
-                </Link>
+                <div key={item.name}>
+                  <Link href={item.href}>
+                    <motion.div
+                      className={`block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-red-400 transition-colors font-medium ${
+                        pathname === item.href ? 'text-blue-600 dark:text-red-400' : ''
+                      }`}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </motion.div>
+                  </Link>
+                  
+                  {/* Mobile Submenu */}
+                  {item.submenu && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      {item.submenu.map((subItem) => (
+                        <Link key={subItem.name} href={subItem.href}>
+                          <div 
+                            className="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-red-400 transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <Link href="/contact">
                 <Button 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ArrowRight, Play, CheckCircle, Users, Zap, Target, Award, Sparkles, Star, Quote, Calendar, TrendingUp } from 'lucide-react';
+import { ChevronDown, ArrowRight, Play, CheckCircle, Users, Zap, Target, Award, Sparkles, Star, Quote, Calendar, TrendingUp, GitBranch, Repeat, BarChart3, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -10,9 +10,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentStat, setCurrentStat] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentProject, setCurrentProject] = useState(0);
 
   const stats = [
-    { number: '150+', label: 'Projects Delivered', icon: CheckCircle },
+    { number: '50+', label: 'Projects Delivered', icon: CheckCircle },
     { number: '98%', label: 'Client Satisfaction', icon: Award },
     { number: '5', label: 'Expert Team Members', icon: Target },
     { number: '24/7', label: 'Support Available', icon: Zap },
@@ -71,26 +72,81 @@ export default function Home() {
       rating: 5,
       project: "Supply Chain Automation",
       industry: "Logistics"
+    }
+  ];
+
+  const projectHistory = [
+    {
+      year: '2024',
+      projects: [
+        { name: 'AI-Powered Trading Platform', client: 'FinTech Pro', type: 'AI/ML', status: 'Completed' },
+        { name: 'Multi-Cloud Infrastructure', client: 'CloudScale Tech', type: 'DevOps', status: 'Completed' },
+        { name: 'Smart Document Processing', client: 'DocuFlow Systems', type: 'AI/ML', status: 'In Progress' },
+        { name: 'E-commerce Analytics Dashboard', client: 'RetailMax', type: 'Web App', status: 'Completed' },
+        { name: 'Healthcare Management Portal', client: 'MedCare Plus', type: 'Web App', status: 'Completed' },
+        { name: 'Supply Chain Automation', client: 'LogiFlow Corp', type: 'Automation', status: 'Completed' },
+        { name: 'Real-time Chat Application', client: 'ConnectNow', type: 'Web App', status: 'Completed' },
+        { name: 'Predictive Maintenance System', client: 'IndustrialTech', type: 'AI/ML', status: 'Completed' },
+        { name: 'Cloud Migration Project', client: 'LegacySoft', type: 'DevOps', status: 'Completed' },
+        { name: 'Mobile Banking App', client: 'SecureBank', type: 'Mobile', status: 'Completed' },
+        { name: 'IoT Data Processing Platform', client: 'SmartDevices Inc', type: 'Backend', status: 'Completed' },
+        { name: 'Customer Service Chatbot', client: 'ServiceFirst', type: 'AI/ML', status: 'Completed' }
+      ]
     },
     {
-      id: 4,
-      content: "Prometheus delivered our multi-cloud infrastructure project ahead of schedule and under budget. Their DevOps expertise and Agile practices resulted in a 99.9% uptime system that scales effortlessly. The team's communication and technical skills are world-class.",
-      author: "David Kim",
-      position: "VP of Engineering",
-      company: "CloudScale Technologies",
-      rating: 5,
-      project: "Multi-Cloud Infrastructure",
-      industry: "Technology"
+      year: '2023',
+      projects: [
+        { name: 'Enterprise Resource Planning', client: 'GlobalCorp', type: 'Web App', status: 'Completed' },
+        { name: 'Machine Learning Pipeline', client: 'DataInsights', type: 'AI/ML', status: 'Completed' },
+        { name: 'Kubernetes Orchestration', client: 'ScaleTech', type: 'DevOps', status: 'Completed' },
+        { name: 'Inventory Management System', client: 'WareHouse Pro', type: 'Web App', status: 'Completed' },
+        { name: 'Fraud Detection Algorithm', client: 'SecurePay', type: 'AI/ML', status: 'Completed' },
+        { name: 'API Gateway Implementation', client: 'MicroServices Ltd', type: 'Backend', status: 'Completed' },
+        { name: 'Content Management Platform', client: 'MediaFlow', type: 'Web App', status: 'Completed' },
+        { name: 'Automated Testing Framework', client: 'QualityFirst', type: 'Automation', status: 'Completed' },
+        { name: 'Data Visualization Dashboard', client: 'AnalyticsPro', type: 'Frontend', status: 'Completed' },
+        { name: 'Blockchain Integration', client: 'CryptoTech', type: 'Backend', status: 'Completed' },
+        { name: 'Performance Monitoring Tool', client: 'MonitorMax', type: 'DevOps', status: 'Completed' },
+        { name: 'Social Media Analytics', client: 'SocialInsights', type: 'AI/ML', status: 'Completed' },
+        { name: 'Video Streaming Platform', client: 'StreamTech', type: 'Web App', status: 'Completed' },
+        { name: 'Recommendation Engine', client: 'ShopSmart', type: 'AI/ML', status: 'Completed' }
+      ]
     },
     {
-      id: 5,
-      content: "The trading platform Prometheus built handles over $2M in daily transactions with sub-50ms latency. Their Agile methodology and continuous integration practices ensured we could adapt to market requirements quickly. Exceptional technical execution.",
-      author: "Robert Thompson",
-      position: "Head of Trading Technology",
-      company: "FinTech Pro",
-      rating: 5,
-      project: "Real-time Trading Platform",
-      industry: "Financial Services"
+      year: '2022',
+      projects: [
+        { name: 'Digital Transformation Suite', client: 'TraditionCorp', type: 'Full Stack', status: 'Completed' },
+        { name: 'Computer Vision System', client: 'VisionTech', type: 'AI/ML', status: 'Completed' },
+        { name: 'CI/CD Pipeline Setup', client: 'DevOps Masters', type: 'DevOps', status: 'Completed' },
+        { name: 'Customer Portal Redesign', client: 'ClientFirst', type: 'Frontend', status: 'Completed' },
+        { name: 'Natural Language Processing', client: 'TextAnalytics', type: 'AI/ML', status: 'Completed' },
+        { name: 'Microservices Architecture', client: 'ModularSoft', type: 'Backend', status: 'Completed' },
+        { name: 'Project Management Tool', client: 'TaskMaster', type: 'Web App', status: 'Completed' },
+        { name: 'Database Optimization', client: 'DataSpeed', type: 'Backend', status: 'Completed' },
+        { name: 'Security Audit Platform', client: 'SecureAudit', type: 'Security', status: 'Completed' },
+        { name: 'Mobile App Development', client: 'AppInnovate', type: 'Mobile', status: 'Completed' },
+        { name: 'Cloud Storage Solution', client: 'CloudStore', type: 'DevOps', status: 'Completed' },
+        { name: 'Business Intelligence Dashboard', client: 'BITech', type: 'Frontend', status: 'Completed' }
+      ]
+    },
+    {
+      year: '2021',
+      projects: [
+        { name: 'Legacy System Modernization', client: 'OldTech Inc', type: 'Full Stack', status: 'Completed' },
+        { name: 'Predictive Analytics Engine', client: 'FutureCast', type: 'AI/ML', status: 'Completed' },
+        { name: 'Container Orchestration', client: 'ContainerPro', type: 'DevOps', status: 'Completed' },
+        { name: 'E-learning Platform', client: 'EduTech', type: 'Web App', status: 'Completed' },
+        { name: 'Image Recognition System', client: 'PhotoAI', type: 'AI/ML', status: 'Completed' },
+        { name: 'REST API Development', client: 'APIFirst', type: 'Backend', status: 'Completed' },
+        { name: 'Progressive Web App', client: 'WebForward', type: 'Frontend', status: 'Completed' },
+        { name: 'Automated Deployment', client: 'DeployFast', type: 'DevOps', status: 'Completed' },
+        { name: 'Data Migration Tool', client: 'DataMove', type: 'Backend', status: 'Completed' },
+        { name: 'User Authentication System', client: 'SecureLogin', type: 'Security', status: 'Completed' },
+        { name: 'Real-time Notifications', client: 'NotifyNow', type: 'Backend', status: 'Completed' },
+        { name: 'Analytics Dashboard', client: 'MetricsPro', type: 'Frontend', status: 'Completed' },
+        { name: 'Payment Gateway Integration', client: 'PaySecure', type: 'Backend', status: 'Completed' },
+        { name: 'Content Delivery Network', client: 'FastContent', type: 'DevOps', status: 'Completed' }
+      ]
     }
   ];
 
@@ -98,22 +154,26 @@ export default function Home() {
     {
       name: "Scrum",
       description: "Sprint-based development with daily standups, sprint planning, and retrospectives",
-      icon: Target
+      icon: Target,
+      symbol: "🔄"
     },
     {
       name: "Kanban",
       description: "Visual workflow management with continuous delivery and WIP limits",
-      icon: TrendingUp
+      icon: BarChart3,
+      symbol: "📊"
     },
     {
       name: "SAFe",
       description: "Scaled Agile Framework for enterprise-level project coordination",
-      icon: Users
+      icon: Users,
+      symbol: "🏢"
     },
     {
       name: "DevOps",
       description: "Continuous integration and deployment with automated testing",
-      icon: Zap
+      icon: GitBranch,
+      symbol: "⚙️"
     }
   ];
 
@@ -137,6 +197,14 @@ export default function Home() {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentProject((prev) => (prev + 1) % projectHistory.length);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -349,6 +417,91 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Project History Section */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">Project History</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                Over 50 successful projects delivered across various industries, showcasing our expertise 
+                in Agile methodologies and cutting-edge technology solutions.
+              </p>
+            </motion.div>
+
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentProject}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-gray-700 rounded-xl p-8"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {projectHistory[currentProject].year} Projects
+                    </h3>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      {projectHistory[currentProject].projects.length} Projects Completed
+                    </span>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projectHistory[currentProject].projects.map((project, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                        className="bg-gray-50 dark:bg-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex items-start justify-between mb-2">
+                          <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{project.name}</h4>
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            project.status === 'Completed' 
+                              ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                              : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
+                          }`}>
+                            {project.status}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{project.client}</p>
+                        <span className="inline-block px-2 py-1 bg-blue-100 dark:bg-red-900/30 text-blue-800 dark:text-red-300 text-xs rounded-full">
+                          {project.type}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Project Navigation */}
+              <div className="flex justify-center mt-8 space-x-2">
+                {projectHistory.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentProject(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentProject === index
+                        ? 'bg-blue-600 dark:bg-red-400'
+                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Agile Methodologies Section */}
         <section className="py-20 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,6 +534,7 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
+                    <div className="text-4xl mb-4">{methodology.symbol}</div>
                     <Icon className="h-12 w-12 mx-auto mb-4 text-blue-600 dark:text-red-400" />
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{methodology.name}</h4>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{methodology.description}</p>

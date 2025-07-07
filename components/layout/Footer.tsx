@@ -29,8 +29,8 @@ const Footer = () => {
                     <span className="text-white font-bold text-xl">P</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold">Prometheus Digital Studio</h3>
-                    <p className="text-gray-400">Igniting digital excellence</p>
+                    <h3 className="text-2xl font-bold">Prometheus</h3>
+                    <p className="text-gray-400">Solution</p>
                   </div>
                 </div>
                 <p className="text-gray-300 mb-6 max-w-md">

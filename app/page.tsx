@@ -79,6 +79,7 @@ export default function Home() {
         <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-red-900/20 overflow-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0">
+            <img src='/image/prometheus.png' className='absolute right-0 top-1/2 -translate-y-1/2 opacity-40 w-1/2 pointer-events-none select-none' alt="Prometheus Logo" />
             <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 dark:bg-red-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
             <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 dark:bg-red-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
             <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-orange-200 dark:bg-red-400/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-2000"></div>
@@ -156,8 +157,8 @@ export default function Home() {
                       <motion.div
                         key={index}
                         className={`text-center p-4 rounded-lg transition-all duration-300 ${currentStat === index
-                            ? 'bg-white dark:bg-gray-800 shadow-lg scale-105'
-                            : 'hover:bg-white/50 dark:hover:bg-gray-800/50'
+                          ? 'bg-white dark:bg-gray-800 shadow-lg scale-105'
+                          : 'hover:bg-white/50 dark:hover:bg-gray-800/50'
                           }`}
                         whileHover={{ scale: 1.05 }}
                       >
@@ -174,7 +175,7 @@ export default function Home() {
               <div className="relative">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 0.8, scale: 1 }}
                   transition={{ duration: 1, delay: 0.3 }}
                   className="relative"
                 >
@@ -239,13 +240,13 @@ export default function Home() {
                     <Zap className="h-6 w-6" />
                   </motion.div>
 
-                  <motion.div
+                  {/* <motion.div
                     animate={{ y: [10, -10, 10] }}
                     transition={{ duration: 3, repeat: Infinity }}
                     className="absolute -bottom-6 -left-6 bg-purple-500 dark:bg-red-600 text-white p-3 rounded-full shadow-lg"
                   >
                     <Target className="h-6 w-6" />
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               </div>
             </div>
@@ -302,8 +303,8 @@ export default function Home() {
                         <div className="flex items-start justify-between mb-2">
                           <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{project.name}</h4>
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${project.status === 'Completed'
-                              ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                              : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
                             }`}>
                             {project.status}
                           </span>
@@ -325,11 +326,25 @@ export default function Home() {
                     key={index}
                     onClick={() => setCurrentProject(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${currentProject === index
-                        ? 'bg-blue-600 dark:bg-red-400'
-                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                      ? 'bg-blue-600 dark:bg-red-400'
+                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                       }`}
                   />
                 ))}
+              </div>
+              <div className="flex justify-center mt-8">
+                <Link href={'/projects'}>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-blue-600 hover:bg-blue-700 dark:bg-red-600 dark:hover:bg-red-700 text-white font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  >
+                    Go to History
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </div>
@@ -355,6 +370,16 @@ export default function Home() {
               </p>
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <img src='/image/agile.png' className="mx-auto block" style={{ width: "50%" }} />
+            </motion.div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {agileMethodologies.map((methodology, index) => {
                 const Icon = methodology.icon;
@@ -367,7 +392,6 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
-                    <div className="text-4xl mb-4">{methodology.symbol}</div>
                     <Icon className="h-12 w-12 mx-auto mb-4 text-blue-600 dark:text-red-400" />
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{methodology.name}</h4>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{methodology.description}</p>
@@ -548,8 +572,8 @@ export default function Home() {
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${currentTestimonial === index
-                        ? 'bg-blue-600 dark:bg-red-400'
-                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                      ? 'bg-blue-600 dark:bg-red-400'
+                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                       }`}
                   />
                 ))}
@@ -607,10 +631,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="/services">
-                  <Button
-                    variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-blue-600 dark:hover:text-red-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
-                  >
+                  <Button className="bg-white text-blue-600 dark:text-red-600 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:shadow-lg">
                     Explore Our Services
                   </Button>
                 </Link>

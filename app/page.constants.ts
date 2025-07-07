@@ -142,25 +142,21 @@ export const agileMethodologies = [
     {
         name: "Scrum",
         description: "Sprint-based development with daily standups, sprint planning, and retrospectives",
-        icon: Target,
-        symbol: "🔄"
+        icon: Target
     },
     {
         name: "Kanban",
         description: "Visual workflow management with continuous delivery and WIP limits",
-        icon: BarChart3,
-        symbol: "📊"
+        icon: BarChart3
     },
     {
         name: "SAFe",
         description: "Scaled Agile Framework for enterprise-level project coordination",
-        icon: Users,
-        symbol: "🏢"
+        icon: Users
     },
     {
         name: "DevOps",
         description: "Continuous integration and deployment with automated testing",
-        icon: GitBranch,
-        symbol: "⚙️"
+        icon: GitBranch
     }
 ];

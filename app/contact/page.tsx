@@ -115,25 +115,25 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center mb-12"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-1 shadow-lg">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-1 shadow-lg flex flex-col gap-2 w-full max-w-xs mx-auto">
               <button
-                onClick={() => setActiveTab('contact')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center ${
+                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center ${
                   activeTab === 'contact'
                     ? 'bg-blue-600 dark:bg-red-600 text-white shadow-lg'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
+                onClick={() => setActiveTab('contact')}
               >
                 <MessageSquare className="h-5 w-5 mr-2" />
                 Start a Project
               </button>
               <button
-                onClick={() => setActiveTab('feedback')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center ${
+                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center ${
                   activeTab === 'feedback'
                     ? 'bg-blue-600 dark:bg-red-600 text-white shadow-lg'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
+                onClick={() => setActiveTab('feedback')}
               >
                 <Heart className="h-5 w-5 mr-2" />
                 Share Feedback

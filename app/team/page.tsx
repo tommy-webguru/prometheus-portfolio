@@ -69,6 +69,19 @@ export default function Team() {
               >
                 {/* Member Image */}
                 <div className="relative h-64 overflow-hidden">
+                  {/* Download CV Button */}
+                  <a
+                    href={member.cv}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute top-4 right-4 z-10 bg-white/80 dark:bg-gray-900/80 text-blue-600 dark:text-red-400 px-4 py-2 rounded-full shadow hover:bg-blue-100 dark:hover:bg-red-800/80 font-semibold flex items-center gap-2 transition-all duration-200"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0l-6-6m6 6l6-6" />
+                    </svg>
+                    CV
+                  </a>
                   <img
                     src={member.image}
                     alt={member.name}

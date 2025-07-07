@@ -24,7 +24,8 @@ export const team = [
             github: '#',
             linkedin: '#',
             email: 'alex@prometheus.studio'
-        }
+        },
+        cv: '/cv/Tomislav-Sokac.pdf'
     },
     {
         name: 'Sarah Rodriguez',
@@ -48,7 +49,8 @@ export const team = [
             github: '#',
             linkedin: '#',
             email: 'sarah@prometheus.studio'
-        }
+        },
+        cv: '/cv/sarah-rodriguez.pdf'
     },
     {
         name: 'Marcus Thompson',
@@ -72,7 +74,8 @@ export const team = [
             github: '#',
             linkedin: '#',
             email: 'marcus@prometheus.studio'
-        }
+        },
+        cv: '/cv/marcus-thompson.pdf'
     },
     {
         name: 'Sam Issa',
@@ -98,7 +101,8 @@ export const team = [
             github: '#',
             linkedin: '#',
             email: 'emma@prometheus.studio'
-        }
+        },
+        cv: '/cv/sam-issa.pdf'
     },
     {
         name: 'David Kim',
@@ -122,7 +126,8 @@ export const team = [
             github: '#',
             linkedin: '#',
             email: 'david@prometheus.studio'
-        }
+        },
+        cv: '/cv/david-kim.pdf'
     }
 ];
 

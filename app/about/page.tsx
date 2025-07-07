@@ -70,17 +70,17 @@ export default function About() {
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Our Story</h2>
               <div className="space-y-4 text-gray-600 dark:text-gray-300">
                 <p>
-                  Founded in 2020, Prometheus Digital Studio emerged from a simple belief: 
+                  Founded in 2020, Prometheus Solution emerged from a simple belief: 
                   technology should solve real problems, not create new ones. We started as 
                   a small team with big ambitions and a commitment to delivering exceptional results.
                 </p>
                 <p>
-                  Today, we're proud to have delivered over 150 projects, maintaining a 98% 
+                  Today, we're proud to have delivered over 50 projects, maintaining a 98% 
                   client satisfaction rate while staying true to our core values of reliability, 
                   innovation, and transparency.
                 </p>
                 <p>
-                  Our minimum project budget reflects our commitment to quality over quantity. 
+                  Our minimum project budget(€1000) reflects our commitment to quality over quantity. 
                   We prefer to work on meaningful projects where we can make a real difference, 
                   rather than spreading ourselves thin across numerous small tasks.
                 </p>
@@ -252,7 +252,7 @@ export default function About() {
               <Link href="/team">
                 <Button 
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-blue-600 dark:hover:text-red-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
+                  className="border-2 border-white bg-red-600 dark:bg-black text-white hover:text-blue-600 dark:hover:text-red-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
                 >
                   Meet Our Team
                 </Button>

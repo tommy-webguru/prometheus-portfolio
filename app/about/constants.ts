@@ -36,14 +36,14 @@ export const milestones = [
     },
     {
         year: '2021',
-        event: 'Delivered first AI/ML solution',
-        description: 'Launched our first machine learning project for e-commerce analytics',
+        event: 'Expanded to full-stack development',
+        description: 'Added comprehensive web and mobile development services',
         highlight: false
     },
     {
         year: '2022',
-        event: 'Expanded to full-stack development',
-        description: 'Added comprehensive web and mobile development services',
+        event: 'Delivered first AI/ML solution',
+        description: 'Launched our first machine learning project for e-commerce analytics',
         highlight: false
     },
     {
@@ -56,14 +56,19 @@ export const milestones = [
         year: '2024',
         event: 'Launched cloud automation services',
         description: 'Introduced advanced DevOps and cloud infrastructure solutions',
-        highlight: false
+        highlight: true
+    },
+    {
+        year: '2025',
+        event: 'More scalable productions with mixed techs',
+        description: 'In progress ...'
     }
 ];
 
 export const achievements = [
-    { metric: 'Projects Completed', value: '150+', icon: CheckCircle },
+    { metric: 'Projects Completed', value: '550+', icon: CheckCircle },
     { metric: 'Client Satisfaction', value: '98%', icon: Heart },
-    { metric: 'Years Experience', value: '50+', icon: Calendar },
+    { metric: 'Years Experience', value: '5+', icon: Calendar },
     { metric: 'Technologies Mastered', value: '25+', icon: TrendingUp },
     { metric: 'Countries Served', value: '12', icon: Globe },
     { metric: 'Team Members', value: '5', icon: Users }

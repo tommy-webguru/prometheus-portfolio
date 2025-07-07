@@ -79,10 +79,12 @@ export default function Services() {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center text-blue-600 dark:text-red-400 font-medium">
-                    Learn More
-                    <ArrowRight className="h-4 w-4 ml-1" />
-                  </div>
+                  <Link href={'/services/' + service.summary}>
+                    <div className="flex items-center text-blue-600 dark:text-red-400 font-medium rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-red-900/30 hover:scale-105 cursor-pointer px-3 py-2">
+                      Learn More
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </div>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -182,6 +184,8 @@ export default function Services() {
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Process</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               We follow a proven methodology to ensure successful project delivery and client satisfaction.
+              <br/>
+              ***If you’d like, we can deliver the best solution within a quick timeframe.***
             </p>
           </motion.div>
 

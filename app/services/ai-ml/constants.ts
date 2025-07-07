@@ -112,7 +112,7 @@ export const process = [
 export const pricing = [
   {
     name: 'Proof of Concept',
-    price: '$25,000',
+    price: '$3,000',
     description: 'Validate AI/ML feasibility for your use case',
     features: [
       'Data analysis and feasibility study',
@@ -124,7 +124,7 @@ export const pricing = [
   },
   {
     name: 'Production Ready',
-    price: '$75,000',
+    price: '$5,000/month',
     description: 'Complete AI/ML solution deployment',
     features: [
       'Custom model development',
@@ -138,7 +138,7 @@ export const pricing = [
   },
   {
     name: 'Enterprise AI',
-    price: '$150,000+',
+    price: '$10,000+/month',
     description: 'Comprehensive AI transformation',
     features: [
       'Multiple AI/ML models',

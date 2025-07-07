@@ -115,7 +115,7 @@ export const process = [
 export const pricing = [
     {
         name: 'Starter',
-        price: '$15,000',
+        price: '$3,000/month',
         description: 'Perfect for small to medium applications',
         features: [
             'Basic CI/CD pipeline setup',
@@ -127,7 +127,7 @@ export const pricing = [
     },
     {
         name: 'Professional',
-        price: '$35,000',
+        price: '$6,000/month',
         description: 'Ideal for growing businesses',
         features: [
             'Advanced CI/CD with testing',
@@ -141,7 +141,7 @@ export const pricing = [
     },
     {
         name: 'Enterprise',
-        price: '$75,000+',
+        price: '$1,0000/month',
         description: 'For large-scale operations',
         features: [
             'Multi-cloud architecture',

@@ -2,9 +2,9 @@ import { Award, Code, Users, Star } from 'lucide-react';
 
 export const team = [
     {
-        name: 'Alex Chen',
-        role: 'CEO & Full-Stack Developer',
-        image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+        name: 'Tomislav Sokac',
+        role: 'CTO Leader Fullstack & DevOps Engineer',
+        image: '/image/tomislav.png',
         bio: 'With 8+ years of experience in full-stack development, Alex leads our team with expertise in scalable architecture and modern web technologies.',
         longBio: 'Alex founded Prometheus Digital Studio with a vision to create technology solutions that truly make a difference. With a background in computer science from Stanford and experience at leading tech companies, Alex brings both technical depth and business acumen to every project.',
         location: 'San Francisco, CA',
@@ -14,7 +14,8 @@ export const team = [
         skills: [
             { name: 'JavaScript/TypeScript', level: 95 },
             { name: 'React/Next.js', level: 90 },
-            { name: 'Node.js', level: 88 },
+            { name: 'Node.js', level: 92 },
+            { name: 'Python', level: 94 },
             { name: 'System Architecture', level: 92 }
         ],
         achievements: ['AWS Certified Solutions Architect', 'React Expert Certification', 'Team Leadership Award'],
@@ -74,9 +75,9 @@ export const team = [
         }
     },
     {
-        name: 'Emma Wilson',
-        role: 'Frontend Developer',
-        image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+        name: 'Sam Issa',
+        role: 'Frontend Developer & IoT Engineer',
+        image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
         bio: 'Emma creates beautiful, responsive user interfaces with a focus on user experience and modern design principles.',
         longBio: 'Emma combines technical expertise with an eye for design to create interfaces that users love. Her background in both development and UX design ensures that every application is not just functional, but delightful to use.',
         location: 'New York, NY',
@@ -87,7 +88,9 @@ export const team = [
             { name: 'React/Vue.js', level: 92 },
             { name: 'UI/UX Design', level: 88 },
             { name: 'CSS/Tailwind', level: 95 },
-            { name: 'JavaScript', level: 90 }
+            { name: 'JavaScript', level: 90 },
+            { name: 'Python', level: 93 },
+            { name: 'ESP32, RasberryPI', level: 85 }
         ],
         achievements: ['UI/UX Design Certification', 'Design Systems Expert', 'Frontend Master'],
         interests: ['Design', 'Art', 'Travel', 'Yoga'],
@@ -125,9 +128,9 @@ export const team = [
 
 
 export const stats = [
-    { number: '50+', label: 'Combined Years Experience', icon: Award },
+    { number: '5+', label: 'Combined Years Experience', icon: Award },
     { number: '15+', label: 'Technologies Mastered', icon: Code },
-    { number: '150+', label: 'Projects Delivered', icon: Users },
+    { number: '50+', label: 'Projects Delivered', icon: Users },
     { number: '98%', label: 'Client Satisfaction', icon: Star }
 ];
 

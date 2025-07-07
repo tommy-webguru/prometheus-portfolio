@@ -119,7 +119,7 @@ export default function Team() {
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Top Skills</h4>
                     <div className="space-y-2">
-                      {member.skills.slice(0, 3).map((skill, skillIndex) => (
+                      {member.skills.map((skill, skillIndex) => (
                         <div key={skillIndex}>
                           <div className="flex justify-between items-center mb-1">
                             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>

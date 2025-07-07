@@ -225,6 +225,8 @@ export default function DevOpsPage() {
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Process</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               A proven methodology that ensures successful DevOps transformation with minimal disruption.
+              <br/>
+              ***If you’d like, we can deliver the best solution within a quick timeframe.***
             </p>
           </motion.div>
 

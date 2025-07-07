@@ -3,6 +3,7 @@ import { Cloud, Brain, Settings, Code, Smartphone, Shield, ArrowRight, CheckCirc
 export const services = [
     {
         icon: Cloud,
+        summary: 'devops',
         title: 'DevOps & Cloud',
         shortDescription: 'Scalable infrastructure and automated deployment pipelines',
         description: 'We architect and implement robust cloud solutions that scale with your business. From containerization to CI/CD pipelines, we ensure your applications are deployed efficiently and maintained reliably.',
@@ -22,12 +23,13 @@ export const services = [
             '40% cost reduction',
             '24/7 monitoring'
         ],
-        pricing: 'Starting at $15,000',
+        pricing: 'Starting at $3,000',
         timeline: '4-8 weeks',
         gradient: 'from-blue-500 to-cyan-500'
     },
     {
         icon: Brain,
+        summary: 'ai-ml',
         title: 'AI & Machine Learning',
         shortDescription: 'Intelligent solutions that learn and adapt to your business needs',
         description: 'Transform your data into actionable insights with our AI/ML solutions. We develop custom models, implement neural networks, and create intelligent systems that drive business growth.',
@@ -47,12 +49,13 @@ export const services = [
             'Real-time predictions',
             'Scalable AI infrastructure'
         ],
-        pricing: 'Starting at $25,000',
+        pricing: 'Starting at $3,000',
         timeline: '6-12 weeks',
         gradient: 'from-purple-500 to-pink-500'
     },
     {
         icon: Settings,
+        summary: 'automation',
         title: 'Process Automation',
         shortDescription: 'Streamline operations with intelligent automation solutions',
         description: 'Eliminate repetitive tasks and optimize workflows with our automation solutions. We design and implement systems that reduce manual effort while increasing accuracy and efficiency.',
@@ -70,14 +73,15 @@ export const services = [
             '75% reduction in manual work',
             '99.5% accuracy improvement',
             '$500K annual savings',
-            'ROI within 6 months'
+            'ROI within 3 months'
         ],
-        pricing: 'Starting at $12,000',
+        pricing: 'Starting at $500',
         timeline: '3-6 weeks',
         gradient: 'from-orange-500 to-red-500'
     },
     {
         icon: Code,
+        summary: 'backend',
         title: 'Backend Development',
         shortDescription: 'Robust, scalable server-side solutions and APIs',
         description: 'Build powerful backend systems that handle your business logic efficiently. We create secure, scalable APIs and databases that serve as the foundation for your applications.',
@@ -97,12 +101,13 @@ export const services = [
             '99.9% uptime',
             'Enterprise-grade security'
         ],
-        pricing: 'Starting at $18,000',
+        pricing: 'Starting at $2,000',
         timeline: '4-10 weeks',
         gradient: 'from-green-500 to-teal-500'
     },
     {
         icon: Smartphone,
+        summary: 'frontend',
         title: 'Frontend Development',
         shortDescription: 'Modern, responsive user interfaces that engage and convert',
         description: 'Create stunning user experiences with our frontend development services. We build responsive, accessible, and performant web applications using the latest technologies.',
@@ -122,12 +127,13 @@ export const services = [
             'Lightning-fast loading',
             'WCAG 2.1 compliant'
         ],
-        pricing: 'Starting at $15,000',
+        pricing: 'Starting at $2,000',
         timeline: '4-8 weeks',
         gradient: 'from-indigo-500 to-blue-500'
     },
     {
         icon: Shield,
+        summary: 'security',
         title: 'Security Solutions',
         shortDescription: 'Comprehensive security measures to protect your digital assets',
         description: 'Safeguard your applications and data with our comprehensive security solutions. We implement best practices, conduct security audits, and ensure your systems are protected against threats.',
@@ -147,7 +153,7 @@ export const services = [
             'Risk reduction by 95%',
             '24/7 threat monitoring'
         ],
-        pricing: 'Starting at $20,000',
+        pricing: 'Starting at $4,000',
         timeline: '3-8 weeks',
         gradient: 'from-gray-600 to-gray-800'
     }

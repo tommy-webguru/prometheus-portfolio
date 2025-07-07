@@ -272,6 +272,8 @@ export default function AIMLPage() {
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Our AI Development Process</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               A systematic approach to AI development that ensures successful model deployment and business impact.
+              <br/>
+              ***If you’d like, we can deliver the best solution within a quick timeframe.***
             </p>
           </motion.div>
 

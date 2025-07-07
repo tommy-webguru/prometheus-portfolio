@@ -1,3 +1,5 @@
+import { Award, Sparkles, Users, BarChart3, GitBranch, CheckCircle, Zap, Target } from 'lucide-react';
+
 export const stats = [
     { number: '50+', label: 'Projects Delivered', icon: CheckCircle },
     { number: '98%', label: 'Client Satisfaction', icon: Award },

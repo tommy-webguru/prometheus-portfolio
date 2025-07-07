@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, ArrowRight, Sun, Moon, Globe, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -31,6 +31,7 @@ const Header = () => {
       services: 'Services',
       projects: 'Projects',
       team: 'Team',
+      market: 'App Market',
       contact: 'Contact',
       getStarted: 'Get Started',
       agileStudio: 'Agile Digital Studio',
@@ -47,6 +48,7 @@ const Header = () => {
       services: 'Servicios',
       projects: 'Proyectos',
       team: 'Equipo',
+      market: 'Mercado de Apps',
       contact: 'Contacto',
       getStarted: 'Comenzar',
       agileStudio: 'Estudio Digital Ágil',
@@ -63,6 +65,7 @@ const Header = () => {
       services: 'Services',
       projects: 'Projets',
       team: 'Équipe',
+      market: 'Marché d\'Apps',
       contact: 'Contact',
       getStarted: 'Commencer',
       agileStudio: 'Studio Numérique Agile',
@@ -79,6 +82,7 @@ const Header = () => {
       services: 'Dienstleistungen',
       projects: 'Projekte',
       team: 'Team',
+      market: 'App-Marktplatz',
       contact: 'Kontakt',
       getStarted: 'Loslegen',
       agileStudio: 'Agiles Digital Studio',
@@ -95,6 +99,7 @@ const Header = () => {
       services: '服务',
       projects: '项目',
       team: '团队',
+      market: '应用市场',
       contact: '联系我们',
       getStarted: '开始',
       agileStudio: '敏捷数字工作室',
@@ -111,6 +116,7 @@ const Header = () => {
       services: 'サービス',
       projects: 'プロジェクト',
       team: 'チーム',
+      market: 'アプリマーケット',
       contact: 'お問い合わせ',
       getStarted: '始める',
       agileStudio: 'アジャイルデジタルスタジオ',
@@ -168,6 +174,8 @@ const Header = () => {
     setCurrentLanguage(langCode);
     localStorage.setItem('language', langCode);
     setIsLanguageMenuOpen(false);
+    // Trigger a page reload to update all content
+    window.location.reload();
   };
 
   const navigationItems = [
@@ -187,6 +195,7 @@ const Header = () => {
     },
     { name: t.projects, href: '/projects' },
     { name: t.team, href: '/team' },
+    { name: t.market, href: '/market' },
     { name: t.contact, href: '/contact' },
   ];
 
@@ -308,6 +317,13 @@ const Header = () => {
                 <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
               )}
             </button>
+
+            <Link href="/market">
+              <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <ShoppingCart className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+              </button>
+            </Link>
+
             <Link href="/contact">
               <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-red-600 dark:hover:bg-red-700 text-white font-medium px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg">
                 {t.getStarted}
@@ -334,6 +350,11 @@ const Header = () => {
                 <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
               )}
             </button>
+            <Link href="/market">
+              <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                <ShoppingCart className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+              </button>
+            </Link>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"

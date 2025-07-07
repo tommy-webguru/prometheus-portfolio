@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { ShoppingCart, Star, Download, Eye, Filter, Search, ArrowRight, CheckCircle, DollarSign, Users, Zap, Shield, Smartphone, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { translations, categories, apps } from './constants';
 
 export default function AppMarket() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -17,557 +18,13 @@ export default function AppMarket() {
     setCurrentLanguage(savedLanguage);
   }, []);
 
-  const translations = {
-    en: {
-      title: 'App Market',
-      subtitle: 'Discover and purchase our premium applications built with cutting-edge technology and proven methodologies.',
-      searchPlaceholder: 'Search apps, features...',
-      filter: 'Filter:',
-      allApps: 'All Apps',
-      productivity: 'Productivity',
-      analytics: 'Analytics',
-      ecommerce: 'E-commerce',
-      healthcare: 'Healthcare',
-      finance: 'Finance',
-      education: 'Education',
-      addToCart: 'Add to Cart',
-      buyNow: 'Buy Now',
-      viewDemo: 'View Demo',
-      features: 'Features',
-      downloads: 'Downloads',
-      rating: 'Rating',
-      price: 'Price',
-      category: 'Category',
-      noApps: 'No apps found matching your criteria.',
-      ctaTitle: 'Need a Custom Solution?',
-      ctaSubtitle: 'Can\'t find what you\'re looking for? Let us build a custom application tailored to your specific needs.',
-      getCustomQuote: 'Get Custom Quote',
-      viewAllServices: 'View All Services',
-      cart: 'Cart',
-      items: 'items',
-      total: 'Total',
-      checkout: 'Checkout',
-      freeTrialAvailable: 'Free Trial Available',
-      oneTimePurchase: 'One-time Purchase',
-      monthlySubscription: 'Monthly Subscription'
-    },
-    es: {
-      title: 'Mercado de Apps',
-      subtitle: 'Descubre y compra nuestras aplicaciones premium construidas con tecnología de vanguardia y metodologías probadas.',
-      searchPlaceholder: 'Buscar apps, características...',
-      filter: 'Filtrar:',
-      allApps: 'Todas las Apps',
-      productivity: 'Productividad',
-      analytics: 'Analítica',
-      ecommerce: 'Comercio Electrónico',
-      healthcare: 'Salud',
-      finance: 'Finanzas',
-      education: 'Educación',
-      addToCart: 'Agregar al Carrito',
-      buyNow: 'Comprar Ahora',
-      viewDemo: 'Ver Demo',
-      features: 'Características',
-      downloads: 'Descargas',
-      rating: 'Calificación',
-      price: 'Precio',
-      category: 'Categoría',
-      noApps: 'No se encontraron aplicaciones que coincidan con sus criterios.',
-      ctaTitle: '¿Necesitas una Solución Personalizada?',
-      ctaSubtitle: '¿No encuentras lo que buscas? Permítenos construir una aplicación personalizada adaptada a tus necesidades específicas.',
-      getCustomQuote: 'Obtener Cotización Personalizada',
-      viewAllServices: 'Ver Todos los Servicios',
-      cart: 'Carrito',
-      items: 'artículos',
-      total: 'Total',
-      checkout: 'Finalizar Compra',
-      freeTrialAvailable: 'Prueba Gratuita Disponible',
-      oneTimePurchase: 'Compra Única',
-      monthlySubscription: 'Suscripción Mensual'
-    },
-    fr: {
-      title: 'Marché d\'Applications',
-      subtitle: 'Découvrez et achetez nos applications premium construites avec une technologie de pointe et des méthodologies éprouvées.',
-      searchPlaceholder: 'Rechercher apps, fonctionnalités...',
-      filter: 'Filtrer:',
-      allApps: 'Toutes les Apps',
-      productivity: 'Productivité',
-      analytics: 'Analytique',
-      ecommerce: 'E-commerce',
-      healthcare: 'Santé',
-      finance: 'Finance',
-      education: 'Éducation',
-      addToCart: 'Ajouter au Panier',
-      buyNow: 'Acheter Maintenant',
-      viewDemo: 'Voir Démo',
-      features: 'Fonctionnalités',
-      downloads: 'Téléchargements',
-      rating: 'Note',
-      price: 'Prix',
-      category: 'Catégorie',
-      noApps: 'Aucune application trouvée correspondant à vos critères.',
-      ctaTitle: 'Besoin d\'une Solution Personnalisée?',
-      ctaSubtitle: 'Vous ne trouvez pas ce que vous cherchez? Laissez-nous construire une application personnalisée adaptée à vos besoins spécifiques.',
-      getCustomQuote: 'Obtenir un Devis Personnalisé',
-      viewAllServices: 'Voir Tous les Services',
-      cart: 'Panier',
-      items: 'articles',
-      total: 'Total',
-      checkout: 'Commander',
-      freeTrialAvailable: 'Essai Gratuit Disponible',
-      oneTimePurchase: 'Achat Unique',
-      monthlySubscription: 'Abonnement Mensuel'
-    },
-    de: {
-      title: 'App-Marktplatz',
-      subtitle: 'Entdecken und kaufen Sie unsere Premium-Anwendungen, die mit modernster Technologie und bewährten Methoden entwickelt wurden.',
-      searchPlaceholder: 'Apps, Features suchen...',
-      filter: 'Filter:',
-      allApps: 'Alle Apps',
-      productivity: 'Produktivität',
-      analytics: 'Analytik',
-      ecommerce: 'E-Commerce',
-      healthcare: 'Gesundheitswesen',
-      finance: 'Finanzen',
-      education: 'Bildung',
-      addToCart: 'In den Warenkorb',
-      buyNow: 'Jetzt Kaufen',
-      viewDemo: 'Demo Ansehen',
-      features: 'Funktionen',
-      downloads: 'Downloads',
-      rating: 'Bewertung',
-      price: 'Preis',
-      category: 'Kategorie',
-      noApps: 'Keine Apps gefunden, die Ihren Kriterien entsprechen.',
-      ctaTitle: 'Benötigen Sie eine Maßgeschneiderte Lösung?',
-      ctaSubtitle: 'Können Sie nicht finden, was Sie suchen? Lassen Sie uns eine maßgeschneiderte Anwendung für Ihre spezifischen Bedürfnisse entwickeln.',
-      getCustomQuote: 'Individuelles Angebot Erhalten',
-      viewAllServices: 'Alle Services Anzeigen',
-      cart: 'Warenkorb',
-      items: 'Artikel',
-      total: 'Gesamt',
-      checkout: 'Zur Kasse',
-      freeTrialAvailable: 'Kostenlose Testversion Verfügbar',
-      oneTimePurchase: 'Einmaliger Kauf',
-      monthlySubscription: 'Monatliches Abonnement'
-    },
-    zh: {
-      title: '应用市场',
-      subtitle: '发现并购买我们使用尖端技术和经过验证的方法构建的高级应用程序。',
-      searchPlaceholder: '搜索应用、功能...',
-      filter: '筛选：',
-      allApps: '所有应用',
-      productivity: '生产力',
-      analytics: '分析',
-      ecommerce: '电子商务',
-      healthcare: '医疗保健',
-      finance: '金融',
-      education: '教育',
-      addToCart: '添加到购物车',
-      buyNow: '立即购买',
-      viewDemo: '查看演示',
-      features: '功能',
-      downloads: '下载量',
-      rating: '评分',
-      price: '价格',
-      category: '类别',
-      noApps: '未找到符合您条件的应用程序。',
-      ctaTitle: '需要定制解决方案？',
-      ctaSubtitle: '找不到您要找的内容？让我们为您的特定需求构建定制应用程序。',
-      getCustomQuote: '获取定制报价',
-      viewAllServices: '查看所有服务',
-      cart: '购物车',
-      items: '项目',
-      total: '总计',
-      checkout: '结账',
-      freeTrialAvailable: '提供免费试用',
-      oneTimePurchase: '一次性购买',
-      monthlySubscription: '月度订阅'
-    },
-    ja: {
-      title: 'アプリマーケット',
-      subtitle: '最先端技術と実証済みの方法論で構築されたプレミアムアプリケーションを発見し、購入してください。',
-      searchPlaceholder: 'アプリ、機能を検索...',
-      filter: 'フィルター：',
-      allApps: 'すべてのアプリ',
-      productivity: '生産性',
-      analytics: '分析',
-      ecommerce: 'Eコマース',
-      healthcare: 'ヘルスケア',
-      finance: '金融',
-      education: '教育',
-      addToCart: 'カートに追加',
-      buyNow: '今すぐ購入',
-      viewDemo: 'デモを見る',
-      features: '機能',
-      downloads: 'ダウンロード数',
-      rating: '評価',
-      price: '価格',
-      category: 'カテゴリー',
-      noApps: '条件に一致するアプリが見つかりません。',
-      ctaTitle: 'カスタムソリューションが必要ですか？',
-      ctaSubtitle: 'お探しのものが見つかりませんか？お客様の特定のニーズに合わせたカスタムアプリケーションを構築いたします。',
-      getCustomQuote: 'カスタム見積もりを取得',
-      viewAllServices: 'すべてのサービスを見る',
-      cart: 'カート',
-      items: 'アイテム',
-      total: '合計',
-      checkout: 'チェックアウト',
-      freeTrialAvailable: '無料トライアル利用可能',
-      oneTimePurchase: '一回限りの購入',
-      monthlySubscription: '月額サブスクリプション'
-    }
-  };
-
   const t = translations[currentLanguage as keyof typeof translations];
-
-  const categories = [
-    { id: 'all', label: t.allApps, count: 15 },
-    { id: 'productivity', label: t.productivity, count: 4 },
-    { id: 'analytics', label: t.analytics, count: 3 },
-    { id: 'ecommerce', label: t.ecommerce, count: 3 },
-    { id: 'healthcare', label: t.healthcare, count: 2 },
-    { id: 'finance', label: t.finance, count: 2 },
-    { id: 'education', label: t.education, count: 1 }
-  ];
-
-  const apps = [
-    {
-      id: 1,
-      name: 'TaskFlow Pro',
-      category: 'productivity',
-      description: 'Advanced project management and team collaboration platform with AI-powered insights.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 49.99,
-      originalPrice: 79.99,
-      rating: 4.8,
-      downloads: '25K+',
-      features: [
-        'AI-powered task prioritization',
-        'Real-time team collaboration',
-        'Advanced analytics dashboard',
-        'Custom workflow automation',
-        'Integration with 50+ tools'
-      ],
-      technologies: ['React', 'Node.js', 'AI/ML', 'WebSocket'],
-      pricingType: 'monthly',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 2,
-      name: 'DataViz Analytics',
-      category: 'analytics',
-      description: 'Comprehensive business intelligence platform with real-time data visualization and predictive analytics.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 199.99,
-      originalPrice: null,
-      rating: 4.9,
-      downloads: '15K+',
-      features: [
-        'Real-time data visualization',
-        'Predictive analytics engine',
-        'Custom dashboard builder',
-        'Multi-source data integration',
-        'Advanced reporting tools'
-      ],
-      technologies: ['React', 'D3.js', 'Python', 'Machine Learning'],
-      pricingType: 'one-time',
-      freeTrialDays: 7,
-      demoUrl: '#'
-    },
-    {
-      id: 3,
-      name: 'ShopMaster Suite',
-      category: 'ecommerce',
-      description: 'Complete e-commerce solution with inventory management, payment processing, and customer analytics.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 89.99,
-      originalPrice: 129.99,
-      rating: 4.7,
-      downloads: '30K+',
-      features: [
-        'Multi-channel inventory management',
-        'Integrated payment processing',
-        'Customer behavior analytics',
-        'Automated marketing tools',
-        'Mobile-responsive storefront'
-      ],
-      technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Redis'],
-      pricingType: 'monthly',
-      freeTrialDays: 30,
-      demoUrl: '#'
-    },
-    {
-      id: 4,
-      name: 'HealthTracker Pro',
-      category: 'healthcare',
-      description: 'Comprehensive health monitoring platform with patient management and telemedicine capabilities.',
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 299.99,
-      originalPrice: null,
-      rating: 4.9,
-      downloads: '8K+',
-      features: [
-        'Patient record management',
-        'Telemedicine integration',
-        'Health analytics dashboard',
-        'Appointment scheduling',
-        'HIPAA compliant security'
-      ],
-      technologies: ['React', 'Node.js', 'WebRTC', 'Encryption'],
-      pricingType: 'one-time',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 5,
-      name: 'FinanceFlow',
-      category: 'finance',
-      description: 'Personal and business finance management with AI-powered insights and automated reporting.',
-      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 39.99,
-      originalPrice: 59.99,
-      rating: 4.6,
-      downloads: '20K+',
-      features: [
-        'Automated expense tracking',
-        'AI-powered financial insights',
-        'Multi-account management',
-        'Custom budget planning',
-        'Tax preparation tools'
-      ],
-      technologies: ['React Native', 'AI/ML', 'Blockchain', 'Security'],
-      pricingType: 'monthly',
-      freeTrialDays: 21,
-      demoUrl: '#'
-    },
-    {
-      id: 6,
-      name: 'LearnHub Platform',
-      category: 'education',
-      description: 'Interactive e-learning platform with course creation tools and student progress tracking.',
-      image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 149.99,
-      originalPrice: null,
-      rating: 4.8,
-      downloads: '12K+',
-      features: [
-        'Interactive course builder',
-        'Student progress analytics',
-        'Video streaming platform',
-        'Assessment and quiz tools',
-        'Certificate generation'
-      ],
-      technologies: ['Vue.js', 'Node.js', 'Video Streaming', 'Analytics'],
-      pricingType: 'one-time',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 7,
-      name: 'CRM Master',
-      category: 'productivity',
-      description: 'Advanced customer relationship management system with sales automation and lead tracking.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 69.99,
-      originalPrice: 99.99,
-      rating: 4.7,
-      downloads: '18K+',
-      features: [
-        'Lead management system',
-        'Sales pipeline automation',
-        'Customer communication tools',
-        'Performance analytics',
-        'Integration with email platforms'
-      ],
-      technologies: ['Angular', 'Spring Boot', 'PostgreSQL', 'Email APIs'],
-      pricingType: 'monthly',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 8,
-      name: 'Inventory Pro',
-      category: 'productivity',
-      description: 'Smart inventory management system with predictive analytics and automated reordering.',
-      image: 'https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 79.99,
-      originalPrice: null,
-      rating: 4.8,
-      downloads: '22K+',
-      features: [
-        'Real-time inventory tracking',
-        'Predictive reorder alerts',
-        'Multi-location management',
-        'Barcode scanning support',
-        'Supplier management tools'
-      ],
-      technologies: ['React', 'Python', 'Machine Learning', 'IoT'],
-      pricingType: 'monthly',
-      freeTrialDays: 30,
-      demoUrl: '#'
-    },
-    {
-      id: 9,
-      name: 'Social Analytics Pro',
-      category: 'analytics',
-      description: 'Comprehensive social media analytics platform with sentiment analysis and trend prediction.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 129.99,
-      originalPrice: 179.99,
-      rating: 4.6,
-      downloads: '10K+',
-      features: [
-        'Multi-platform social monitoring',
-        'Sentiment analysis engine',
-        'Trend prediction algorithms',
-        'Competitor analysis tools',
-        'Automated reporting'
-      ],
-      technologies: ['Python', 'NLP', 'Machine Learning', 'APIs'],
-      pricingType: 'monthly',
-      freeTrialDays: 7,
-      demoUrl: '#'
-    },
-    {
-      id: 10,
-      name: 'WebStore Builder',
-      category: 'ecommerce',
-      description: 'Drag-and-drop e-commerce website builder with integrated payment and shipping solutions.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 59.99,
-      originalPrice: 89.99,
-      rating: 4.5,
-      downloads: '35K+',
-      features: [
-        'Drag-and-drop website builder',
-        'Integrated payment gateways',
-        'Shipping calculator',
-        'SEO optimization tools',
-        'Mobile-responsive themes'
-      ],
-      technologies: ['React', 'Stripe', 'PayPal', 'SEO Tools'],
-      pricingType: 'monthly',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 11,
-      name: 'Time Tracker Elite',
-      category: 'productivity',
-      description: 'Advanced time tracking and productivity analysis tool for teams and freelancers.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 29.99,
-      originalPrice: 49.99,
-      rating: 4.7,
-      downloads: '28K+',
-      features: [
-        'Automatic time tracking',
-        'Productivity analytics',
-        'Project time allocation',
-        'Team performance metrics',
-        'Invoice generation'
-      ],
-      technologies: ['Electron', 'React', 'Node.js', 'Analytics'],
-      pricingType: 'monthly',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 12,
-      name: 'Market Research Hub',
-      category: 'analytics',
-      description: 'Comprehensive market research platform with survey tools and data analysis capabilities.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 179.99,
-      originalPrice: null,
-      rating: 4.8,
-      downloads: '6K+',
-      features: [
-        'Survey creation tools',
-        'Statistical analysis engine',
-        'Market trend visualization',
-        'Competitor benchmarking',
-        'Custom report generation'
-      ],
-      technologies: ['Vue.js', 'Python', 'Statistics', 'Data Visualization'],
-      pricingType: 'one-time',
-      freeTrialDays: 14,
-      demoUrl: '#'
-    },
-    {
-      id: 13,
-      name: 'Marketplace Connect',
-      category: 'ecommerce',
-      description: 'Multi-marketplace integration platform for managing products across different e-commerce channels.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 99.99,
-      originalPrice: 149.99,
-      rating: 4.6,
-      downloads: '14K+',
-      features: [
-        'Multi-marketplace sync',
-        'Centralized inventory management',
-        'Automated pricing updates',
-        'Order management system',
-        'Performance analytics'
-      ],
-      technologies: ['Node.js', 'APIs', 'Database Sync', 'Automation'],
-      pricingType: 'monthly',
-      freeTrialDays: 21,
-      demoUrl: '#'
-    },
-    {
-      id: 14,
-      name: 'MedRecord System',
-      category: 'healthcare',
-      description: 'Electronic health record system with patient portal and clinical decision support.',
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 399.99,
-      originalPrice: null,
-      rating: 4.9,
-      downloads: '5K+',
-      features: [
-        'Electronic health records',
-        'Patient portal access',
-        'Clinical decision support',
-        'Prescription management',
-        'Medical imaging integration'
-      ],
-      technologies: ['React', 'FHIR', 'HL7', 'Security', 'Compliance'],
-      pricingType: 'one-time',
-      freeTrialDays: 30,
-      demoUrl: '#'
-    },
-    {
-      id: 15,
-      name: 'CryptoTrader Pro',
-      category: 'finance',
-      description: 'Advanced cryptocurrency trading platform with AI-powered market analysis and automated trading.',
-      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
-      price: 199.99,
-      originalPrice: 299.99,
-      rating: 4.5,
-      downloads: '9K+',
-      features: [
-        'AI-powered market analysis',
-        'Automated trading bots',
-        'Portfolio management',
-        'Risk assessment tools',
-        'Real-time market data'
-      ],
-      technologies: ['React', 'AI/ML', 'Blockchain', 'WebSocket', 'Security'],
-      pricingType: 'monthly',
-      freeTrialDays: 7,
-      demoUrl: '#'
-    }
-  ];
 
   const filteredApps = apps.filter(app => {
     const matchesCategory = selectedCategory === 'all' || app.category === selectedCategory;
     const matchesSearch = app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         app.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         app.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()));
+      app.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      app.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -674,18 +131,16 @@ export default function AppMarket() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-                  selectedCategory === category.id
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${selectedCategory === category.id
                     ? 'bg-green-600 text-white shadow-lg'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
+                  }`}
               >
                 {category.label}
-                <span className={`px-2 py-1 rounded-full text-xs ${
-                  selectedCategory === category.id
+                <span className={`px-2 py-1 rounded-full text-xs ${selectedCategory === category.id
                     ? 'bg-white/20 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                }`}>
+                  }`}>
                   {category.count}
                 </span>
               </button>
@@ -791,24 +246,23 @@ export default function AppMarket() {
                   {/* Action Buttons */}
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-3">
-                      <Button 
+                      <Button
                         onClick={() => addToCart(app.id)}
                         disabled={cart.includes(app.id)}
-                        className={`${
-                          cart.includes(app.id)
+                        className={`${cart.includes(app.id)
                             ? 'bg-gray-400 cursor-not-allowed'
                             : 'bg-green-600 hover:bg-green-700'
-                        } text-white text-sm`}
+                          } text-white text-sm`}
                       >
                         {cart.includes(app.id) ? 'In Cart' : t.addToCart}
                       </Button>
-                      <Button 
+                      <Button
                         className="bg-blue-600 hover:bg-blue-700 text-white text-sm"
                       >
                         {t.buyNow}
                       </Button>
                     </div>
-                    <Button 
+                    <Button
                       variant="outline"
                       className="w-full border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 text-sm"
                     >
@@ -858,7 +312,7 @@ export default function AppMarket() {
                 </Button>
               </Link>
               <Link href="/services">
-                <Button 
+                <Button
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white hover:text-green-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
                 >

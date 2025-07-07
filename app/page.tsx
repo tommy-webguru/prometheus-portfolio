@@ -2,180 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ArrowRight, Play, CheckCircle, Users, Zap, Target, Award, Sparkles, Star, Quote, Calendar, TrendingUp, GitBranch, Repeat, BarChart3, Clock } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle, Zap, Target, Star, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { stats, features, testimonials, projectHistory, agileMethodologies } from './page.constants';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentStat, setCurrentStat] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentProject, setCurrentProject] = useState(0);
-
-  const stats = [
-    { number: '50+', label: 'Projects Delivered', icon: CheckCircle },
-    { number: '98%', label: 'Client Satisfaction', icon: Award },
-    { number: '5', label: 'Expert Team Members', icon: Target },
-    { number: '24/7', label: 'Support Available', icon: Zap },
-  ];
-
-  const features = [
-    {
-      title: 'Agile Development Excellence',
-      description: 'We are certified Scrum Masters and Kanban practitioners, delivering projects with maximum efficiency and transparency through proven Agile methodologies.',
-      icon: Zap
-    },
-    {
-      title: 'AI-Powered Innovation',
-      description: 'Our team leverages cutting-edge machine learning algorithms, neural networks, and AI frameworks to create intelligent solutions that adapt and evolve with your business needs.',
-      icon: Sparkles
-    },
-    {
-      title: 'Scalable Enterprise Architecture',
-      description: 'We design and implement robust, microservices-based architectures that can handle millions of users while maintaining peak performance and security standards.',
-      icon: Target
-    },
-    {
-      title: 'Cross-Functional Expert Team',
-      description: 'Our diverse team of five seasoned professionals brings together decades of experience in full-stack development, DevOps, AI/ML, and enterprise solutions.',
-      icon: Users
-    }
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      content: "Prometheus Digital Studio transformed our entire business operations with their AI-powered analytics platform. The team's Agile approach meant we saw results every sprint, and their transparency throughout the process was exceptional. Our revenue increased by 35% within the first quarter of implementation.",
-      author: "Sarah Chen",
-      position: "CTO",
-      company: "TechFlow Solutions",
-      rating: 5,
-      project: "AI Analytics Platform",
-      industry: "E-commerce"
-    },
-    {
-      id: 2,
-      content: "Working with Prometheus was a game-changer for our healthcare management system. Their Scrum methodology kept us aligned every step of the way, and the quality of their code is outstanding. The system now processes 10,000+ patient records daily with 99.9% uptime.",
-      author: "Dr. Michael Rodriguez",
-      position: "Chief Medical Officer",
-      company: "MedCare Innovations",
-      rating: 5,
-      project: "Healthcare Management Platform",
-      industry: "Healthcare"
-    },
-    {
-      id: 3,
-      content: "The automation solution Prometheus built for us eliminated 75% of our manual work and saved us over $500K annually. Their Kanban approach allowed us to prioritize features effectively, and their team was incredibly responsive to our changing requirements.",
-      author: "Jennifer Walsh",
-      position: "Operations Director",
-      company: "LogiFlow Corporation",
-      rating: 5,
-      project: "Supply Chain Automation",
-      industry: "Logistics"
-    }
-  ];
-
-  const projectHistory = [
-    {
-      year: '2024',
-      projects: [
-        { name: 'AI-Powered Trading Platform', client: 'FinTech Pro', type: 'AI/ML', status: 'Completed' },
-        { name: 'Multi-Cloud Infrastructure', client: 'CloudScale Tech', type: 'DevOps', status: 'Completed' },
-        { name: 'Smart Document Processing', client: 'DocuFlow Systems', type: 'AI/ML', status: 'In Progress' },
-        { name: 'E-commerce Analytics Dashboard', client: 'RetailMax', type: 'Web App', status: 'Completed' },
-        { name: 'Healthcare Management Portal', client: 'MedCare Plus', type: 'Web App', status: 'Completed' },
-        { name: 'Supply Chain Automation', client: 'LogiFlow Corp', type: 'Automation', status: 'Completed' },
-        { name: 'Real-time Chat Application', client: 'ConnectNow', type: 'Web App', status: 'Completed' },
-        { name: 'Predictive Maintenance System', client: 'IndustrialTech', type: 'AI/ML', status: 'Completed' },
-        { name: 'Cloud Migration Project', client: 'LegacySoft', type: 'DevOps', status: 'Completed' },
-        { name: 'Mobile Banking App', client: 'SecureBank', type: 'Mobile', status: 'Completed' },
-        { name: 'IoT Data Processing Platform', client: 'SmartDevices Inc', type: 'Backend', status: 'Completed' },
-        { name: 'Customer Service Chatbot', client: 'ServiceFirst', type: 'AI/ML', status: 'Completed' }
-      ]
-    },
-    {
-      year: '2023',
-      projects: [
-        { name: 'Enterprise Resource Planning', client: 'GlobalCorp', type: 'Web App', status: 'Completed' },
-        { name: 'Machine Learning Pipeline', client: 'DataInsights', type: 'AI/ML', status: 'Completed' },
-        { name: 'Kubernetes Orchestration', client: 'ScaleTech', type: 'DevOps', status: 'Completed' },
-        { name: 'Inventory Management System', client: 'WareHouse Pro', type: 'Web App', status: 'Completed' },
-        { name: 'Fraud Detection Algorithm', client: 'SecurePay', type: 'AI/ML', status: 'Completed' },
-        { name: 'API Gateway Implementation', client: 'MicroServices Ltd', type: 'Backend', status: 'Completed' },
-        { name: 'Content Management Platform', client: 'MediaFlow', type: 'Web App', status: 'Completed' },
-        { name: 'Automated Testing Framework', client: 'QualityFirst', type: 'Automation', status: 'Completed' },
-        { name: 'Data Visualization Dashboard', client: 'AnalyticsPro', type: 'Frontend', status: 'Completed' },
-        { name: 'Blockchain Integration', client: 'CryptoTech', type: 'Backend', status: 'Completed' },
-        { name: 'Performance Monitoring Tool', client: 'MonitorMax', type: 'DevOps', status: 'Completed' },
-        { name: 'Social Media Analytics', client: 'SocialInsights', type: 'AI/ML', status: 'Completed' },
-        { name: 'Video Streaming Platform', client: 'StreamTech', type: 'Web App', status: 'Completed' },
-        { name: 'Recommendation Engine', client: 'ShopSmart', type: 'AI/ML', status: 'Completed' }
-      ]
-    },
-    {
-      year: '2022',
-      projects: [
-        { name: 'Digital Transformation Suite', client: 'TraditionCorp', type: 'Full Stack', status: 'Completed' },
-        { name: 'Computer Vision System', client: 'VisionTech', type: 'AI/ML', status: 'Completed' },
-        { name: 'CI/CD Pipeline Setup', client: 'DevOps Masters', type: 'DevOps', status: 'Completed' },
-        { name: 'Customer Portal Redesign', client: 'ClientFirst', type: 'Frontend', status: 'Completed' },
-        { name: 'Natural Language Processing', client: 'TextAnalytics', type: 'AI/ML', status: 'Completed' },
-        { name: 'Microservices Architecture', client: 'ModularSoft', type: 'Backend', status: 'Completed' },
-        { name: 'Project Management Tool', client: 'TaskMaster', type: 'Web App', status: 'Completed' },
-        { name: 'Database Optimization', client: 'DataSpeed', type: 'Backend', status: 'Completed' },
-        { name: 'Security Audit Platform', client: 'SecureAudit', type: 'Security', status: 'Completed' },
-        { name: 'Mobile App Development', client: 'AppInnovate', type: 'Mobile', status: 'Completed' },
-        { name: 'Cloud Storage Solution', client: 'CloudStore', type: 'DevOps', status: 'Completed' },
-        { name: 'Business Intelligence Dashboard', client: 'BITech', type: 'Frontend', status: 'Completed' }
-      ]
-    },
-    {
-      year: '2021',
-      projects: [
-        { name: 'Legacy System Modernization', client: 'OldTech Inc', type: 'Full Stack', status: 'Completed' },
-        { name: 'Predictive Analytics Engine', client: 'FutureCast', type: 'AI/ML', status: 'Completed' },
-        { name: 'Container Orchestration', client: 'ContainerPro', type: 'DevOps', status: 'Completed' },
-        { name: 'E-learning Platform', client: 'EduTech', type: 'Web App', status: 'Completed' },
-        { name: 'Image Recognition System', client: 'PhotoAI', type: 'AI/ML', status: 'Completed' },
-        { name: 'REST API Development', client: 'APIFirst', type: 'Backend', status: 'Completed' },
-        { name: 'Progressive Web App', client: 'WebForward', type: 'Frontend', status: 'Completed' },
-        { name: 'Automated Deployment', client: 'DeployFast', type: 'DevOps', status: 'Completed' },
-        { name: 'Data Migration Tool', client: 'DataMove', type: 'Backend', status: 'Completed' },
-        { name: 'User Authentication System', client: 'SecureLogin', type: 'Security', status: 'Completed' },
-        { name: 'Real-time Notifications', client: 'NotifyNow', type: 'Backend', status: 'Completed' },
-        { name: 'Analytics Dashboard', client: 'MetricsPro', type: 'Frontend', status: 'Completed' },
-        { name: 'Payment Gateway Integration', client: 'PaySecure', type: 'Backend', status: 'Completed' },
-        { name: 'Content Delivery Network', client: 'FastContent', type: 'DevOps', status: 'Completed' }
-      ]
-    }
-  ];
-
-  const agileMethodologies = [
-    {
-      name: "Scrum",
-      description: "Sprint-based development with daily standups, sprint planning, and retrospectives",
-      icon: Target,
-      symbol: "🔄"
-    },
-    {
-      name: "Kanban",
-      description: "Visual workflow management with continuous delivery and WIP limits",
-      icon: BarChart3,
-      symbol: "📊"
-    },
-    {
-      name: "SAFe",
-      description: "Scaled Agile Framework for enterprise-level project coordination",
-      icon: Users,
-      symbol: "🏢"
-    },
-    {
-      name: "DevOps",
-      description: "Continuous integration and deployment with automated testing",
-      icon: GitBranch,
-      symbol: "⚙️"
-    }
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -261,17 +97,17 @@ export default function Home() {
                     <Zap className="h-4 w-4 mr-2" />
                     Agile Full-Stack IT Solutions
                   </div>
-                  
+
                   <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                    Igniting 
+                    Igniting
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent"> Digital</span>
                     <br />
                     Excellence
                   </h1>
-                  
+
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed">
-                    We are a certified Agile team specializing in Scrum and Kanban methodologies. 
-                    Our expertise spans AI/ML, DevOps, automation, and full-stack development, 
+                    We are a certified Agile team specializing in Scrum and Kanban methodologies.
+                    Our expertise spans AI/ML, DevOps, automation, and full-stack development,
                     delivering scalable, secure, and innovative technology solutions that transform businesses.
                   </p>
 
@@ -297,8 +133,8 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
-                  
-                  <Button 
+
+                  <Button
                     variant="outline"
                     className="border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-red-600 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-red-400 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
                   >
@@ -319,11 +155,10 @@ export default function Home() {
                     return (
                       <motion.div
                         key={index}
-                        className={`text-center p-4 rounded-lg transition-all duration-300 ${
-                          currentStat === index 
-                            ? 'bg-white dark:bg-gray-800 shadow-lg scale-105' 
+                        className={`text-center p-4 rounded-lg transition-all duration-300 ${currentStat === index
+                            ? 'bg-white dark:bg-gray-800 shadow-lg scale-105'
                             : 'hover:bg-white/50 dark:hover:bg-gray-800/50'
-                        }`}
+                          }`}
                         whileHover={{ scale: 1.05 }}
                       >
                         <Icon className="h-8 w-8 mx-auto mb-2 text-blue-600 dark:text-red-400" />
@@ -431,7 +266,7 @@ export default function Home() {
                 Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">Project History</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                Over 50 successful projects delivered across various industries, showcasing our expertise 
+                Over 50 successful projects delivered across various industries, showcasing our expertise
                 in Agile methodologies and cutting-edge technology solutions.
               </p>
             </motion.div>
@@ -454,7 +289,7 @@ export default function Home() {
                       {projectHistory[currentProject].projects.length} Projects Completed
                     </span>
                   </div>
-                  
+
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projectHistory[currentProject].projects.map((project, index) => (
                       <motion.div
@@ -466,11 +301,10 @@ export default function Home() {
                       >
                         <div className="flex items-start justify-between mb-2">
                           <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{project.name}</h4>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            project.status === 'Completed' 
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${project.status === 'Completed'
                               ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
                               : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
-                          }`}>
+                            }`}>
                             {project.status}
                           </span>
                         </div>
@@ -490,11 +324,10 @@ export default function Home() {
                   <button
                     key={index}
                     onClick={() => setCurrentProject(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentProject === index
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentProject === index
                         ? 'bg-blue-600 dark:bg-red-400'
                         : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -516,8 +349,8 @@ export default function Home() {
                 Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">Agile</span> Expertise
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                As certified Agile practitioners, we master multiple methodologies to ensure your project's success. 
-                Our team holds certifications in Scrum Master, Product Owner, Kanban, and SAFe frameworks, 
+                As certified Agile practitioners, we master multiple methodologies to ensure your project's success.
+                Our team holds certifications in Scrum Master, Product Owner, Kanban, and SAFe frameworks,
                 delivering consistent results through proven iterative approaches.
               </p>
             </motion.div>
@@ -554,8 +387,8 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Our Agile approach ensures transparency, adaptability, and continuous value delivery. 
-                    We break down complex projects into manageable sprints, allowing for regular feedback 
+                    Our Agile approach ensures transparency, adaptability, and continuous value delivery.
+                    We break down complex projects into manageable sprints, allowing for regular feedback
                     and course corrections that keep your project aligned with business objectives.
                   </p>
                   <ul className="space-y-2">
@@ -575,8 +408,8 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Our certified Scrum Masters and Product Owners ensure that every sprint delivers 
-                    measurable value while maintaining the flexibility to adapt to changing requirements 
+                    Our certified Scrum Masters and Product Owners ensure that every sprint delivers
+                    measurable value while maintaining the flexibility to adapt to changing requirements
                     and market conditions.
                   </p>
                   <ul className="space-y-2">
@@ -613,8 +446,8 @@ export default function Home() {
                 Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">Prometheus</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                We combine deep technical expertise with proven Agile methodologies to deliver solutions 
-                that not only meet your current needs but scale with your business growth. Our approach 
+                We combine deep technical expertise with proven Agile methodologies to deliver solutions
+                that not only meet your current needs but scale with your business growth. Our approach
                 ensures transparency, quality, and measurable results at every stage of development.
               </p>
             </motion.div>
@@ -657,7 +490,7 @@ export default function Home() {
                 Client <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">Success Stories</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Our Agile approach and technical expertise have helped businesses across industries 
+                Our Agile approach and technical expertise have helped businesses across industries
                 achieve remarkable results. Here's what our clients say about working with us.
               </p>
             </motion.div>
@@ -678,7 +511,7 @@ export default function Home() {
                       <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         {testimonials[currentTestimonial].content}
                       </p>
-                      
+
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -696,7 +529,7 @@ export default function Home() {
                             </span>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center">
                           {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                             <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -714,11 +547,10 @@ export default function Home() {
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentTestimonial === index
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentTestimonial === index
                         ? 'bg-blue-600 dark:bg-red-400'
                         : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -763,8 +595,8 @@ export default function Home() {
                 Ready to Transform Your Business with Agile Excellence?
               </h2>
               <p className="text-xl text-blue-100 dark:text-red-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Let's discuss how our proven Agile methodologies and technical expertise can help you 
-                achieve your digital transformation goals. Our team is ready to deliver exceptional 
+                Let's discuss how our proven Agile methodologies and technical expertise can help you
+                achieve your digital transformation goals. Our team is ready to deliver exceptional
                 results through transparent, iterative development.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -775,7 +607,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="/services">
-                  <Button 
+                  <Button
                     variant="outline"
                     className="border-2 border-white text-white hover:bg-white hover:text-blue-600 dark:hover:text-red-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
                   >

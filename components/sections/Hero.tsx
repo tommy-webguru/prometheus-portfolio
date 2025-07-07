@@ -2,18 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Zap, Target, Award, CheckCircle } from 'lucide-react';
+import { ArrowRight, Play, Zap, Target, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { stats } from './Hero.constants';
 
 const Hero = () => {
   const [currentStat, setCurrentStat] = useState(0);
-
-  const stats = [
-    { number: '150+', label: 'Projects Delivered', icon: CheckCircle },
-    { number: '98%', label: 'Client Satisfaction', icon: Award },
-    { number: '5', label: 'Expert Team Members', icon: Target },
-    { number: '24/7', label: 'Support Available', icon: Zap },
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,16 +46,16 @@ const Hero = () => {
                 <Zap className="h-4 w-4 mr-2" />
                 Full-Stack IT Solutions
               </div>
-              
+
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Igniting 
+                Igniting
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Digital</span>
                 <br />
                 Excellence
               </h1>
-              
+
               <p className="text-xl text-gray-600 max-w-lg">
-                We craft cutting-edge solutions that transform businesses. From AI/ML to DevOps, 
+                We craft cutting-edge solutions that transform businesses. From AI/ML to DevOps,
                 we deliver scalable, secure, and innovative technology solutions.
               </p>
             </motion.div>
@@ -72,15 +66,15 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button 
+              <Button
                 onClick={scrollToContact}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              
-              <Button 
+
+              <Button
                 variant="outline"
                 className="border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300"
               >
@@ -101,11 +95,10 @@ const Hero = () => {
                 return (
                   <motion.div
                     key={index}
-                    className={`text-center p-4 rounded-lg transition-all duration-300 ${
-                      currentStat === index 
-                        ? 'bg-white shadow-lg scale-105' 
+                    className={`text-center p-4 rounded-lg transition-all duration-300 ${currentStat === index
+                        ? 'bg-white shadow-lg scale-105'
                         : 'hover:bg-white/50'
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                   >
                     <Icon className="h-8 w-8 mx-auto mb-2 text-blue-600" />

@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Send, Phone, Mail, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { budgetOptions, projectTypes, contactInfo } from './Contact.constants';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,49 +17,6 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const budgetOptions = [
-    { value: '10k-25k', label: '$10K - $25K' },
-    { value: '25k-50k', label: '$25K - $50K' },
-    { value: '50k-100k', label: '$50K - $100K' },
-    { value: '100k+', label: '$100K+' }
-  ];
-
-  const projectTypes = [
-    { value: 'web-app', label: 'Web Application' },
-    { value: 'ai-ml', label: 'AI/ML Solution' },
-    { value: 'automation', label: 'Process Automation' },
-    { value: 'cloud-devops', label: 'Cloud/DevOps' },
-    { value: 'mobile-app', label: 'Mobile Application' },
-    { value: 'consulting', label: 'Consulting' }
-  ];
-
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+1 (555) 123-4567',
-      description: 'Mon-Fri 9AM-6PM PST'
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'hello@prometheus.studio',
-      description: 'We respond within 24 hours'
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      value: 'San Francisco, CA',
-      description: 'Remote-first team'
-    },
-    {
-      icon: Clock,
-      title: 'Response Time',
-      value: '< 24 hours',
-      description: 'For all inquiries'
-    }
-  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -75,10 +33,10 @@ const Contact = () => {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // Here you would typically send the form data to your backend
       console.log('Form submitted:', formData);
-      
+
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -124,7 +82,7 @@ const Contact = () => {
           >
             <div className="bg-gray-50 rounded-xl p-8">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">Start Your Project</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -235,7 +193,7 @@ const Contact = () => {
 
                 <div className="bg-blue-50 rounded-lg p-4">
                   <p className="text-sm text-blue-800">
-                    <strong>Minimum Project Budget:</strong> We work with businesses that have a minimum budget of $10,000 
+                    <strong>Minimum Project Budget:</strong> We work with businesses that have a minimum budget of $10,000
                     to ensure we can deliver the quality and attention your project deserves.
                   </p>
                 </div>
@@ -299,7 +257,7 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h3>
               <p className="text-gray-600 mb-8">
-                We're here to help you transform your business with innovative technology solutions. 
+                We're here to help you transform your business with innovative technology solutions.
                 Reach out through any of these channels.
               </p>
             </div>

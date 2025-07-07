@@ -1,41 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUp, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { footerLinks, socialLinks } from './constant'
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const footerLinks = {
-    services: [
-      { name: 'DevOps & Cloud', href: '/services' },
-      { name: 'AI & Machine Learning', href: '/services' },
-      { name: 'Process Automation', href: '/services' },
-      { name: 'Backend Development', href: '/services' },
-      { name: 'Frontend Development', href: '/services' },
-      { name: 'Security Solutions', href: '/services' }
-    ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Our Team', href: '/team' },
-      { name: 'Projects', href: '/projects' },
-      { name: 'Contact', href: '/contact' }
-    ],
-    legal: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Cookie Policy', href: '#' }
-    ]
-  };
-
-  const socialLinks = [
-    { name: 'Github', icon: Github, href: '#' },
-    { name: 'LinkedIn', icon: Linkedin, href: '#' },
-    { name: 'Twitter', icon: Twitter, href: '#' }
-  ];
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
@@ -61,7 +34,7 @@ const Footer = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 mb-6 max-w-md">
-                  We craft cutting-edge solutions that transform businesses. From AI/ML to DevOps, 
+                  We craft cutting-edge solutions that transform businesses. From AI/ML to DevOps,
                   we deliver scalable, secure, and innovative technology solutions.
                 </p>
                 <div className="space-y-2">
@@ -126,7 +99,7 @@ const Footer = () => {
                     </li>
                   ))}
                 </ul>
-                
+
                 <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((social) => {
